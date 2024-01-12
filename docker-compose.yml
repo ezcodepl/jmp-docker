@@ -1,0 +1,32 @@
+version: '3.9'
+services: 
+  joomla:
+    image: joomla
+    links:
+     - mysql
+    ports:
+     - "83:80"
+    environment:
+     - JOOMLA_DB_HOST=mysql:3306
+     - JOOMLA_DB_PASSWORD=12345678
+     - UPLOAD_LIMIT=300M
+    volumes:
+     - ./code:/var/www/html
+  
+  mysql:
+    image: mysql
+    environment:
+     - MYSQL_ROOT_PASSWORD=12345678
+     - MYSQL_DATABASE=joomla
+    volumes:
+     - ./database:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+     - mysql
+    ports:
+     - "82:80"
+    environment:
+     - PMA_HOST=mysql
+     - UPLOAD_LIMIT=300M
