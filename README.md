@@ -1,2 +1,2 @@
 # jmp-docker
-Docker Joomla + MySQL + PhpMyadmin 2024 r.
+Docker Joomla + MySQL + PhpMyAdmin 2024 r.
